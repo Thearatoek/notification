@@ -1,8 +1,10 @@
-import { initializeApp } from 'firebase-admin/app';
+import { initializeApp, applicationDefault } from 'firebase-admin/app';
 import { getMessaging } from "firebase-admin/messaging";
-import express from "express";
+import express, { json } from "express";
 import cors from "cors";
-import serviceAccount from "/Users/toektheara/Documents/notify/kve-app-d25fa-firebase-adminsdk-wfwh3-411a884d81.json.json" assert { type: "json" };
+
+
+process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
 const app = express();
 app.use(express.json());
@@ -13,15 +15,21 @@ app.use(
     })
 );
 
-app.use((req, res, next) => {
+app.use(
+    cors({
+        methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+    })
+);
+
+app.use(function (req, res, next) {
     res.setHeader("Content-Type", "application/json");
     next();
 });
 
-// Initialize Firebase Admin with explicit credentials
+
 initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    projectId: 'kve-app-d25fa',
+    credential: applicationDefault(),
+    projectId: 'potion-for-creators',
 });
 
 app.post("/send", function (req, res) {
@@ -45,9 +53,12 @@ app.post("/send", function (req, res) {
             console.log("Successfully sent message:", response);
         })
         .catch((error) => {
-            res.status(400).send(error);
+            res.status(400);
+            res.send(error);
             console.log("Error sending message:", error);
         });
+
+
 });
 
 app.listen(3000, function () {
