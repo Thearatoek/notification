@@ -37,8 +37,8 @@ app.post("/send", function (req, res) {
 
     const message = {
         notification: {
-            title: "Teav Coffee",
-            body: 'Your order is ready for pickup',
+            title: req.body.title,
+            body: req.body.body,
         },
         token: receivedToken,
     };
