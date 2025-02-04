@@ -29,7 +29,7 @@ app.use(function (req, res, next) {
 
 initializeApp({
     credential: applicationDefault(),
-    projectId: 'potion-for-creators',
+    projectId: 'kve-app-d25fa',
 });
 
 app.post("/send", function (req, res) {
@@ -37,8 +37,8 @@ app.post("/send", function (req, res) {
 
     const message = {
         notification: {
-            title: "Notif",
-            body: 'This is a Test Notification'
+            title: "Teav Coffee",
+            body: 'Your order is ready for pickup',
         },
         token: "dJJfW_0PRzOPQSETDmQCp5:APA91bFuSyKbOVbWYeTdNFX7x5cRrC5BR5R96wYE7j6GxFbNvOSarmfz7TwxYV7kZGaT5cORYT64jsjjVvdjzjZ6ui3IpmB_vJ76CT1Pmny-tFyOEXuebPw",
     };
@@ -64,3 +64,6 @@ app.post("/send", function (req, res) {
 app.listen(3000, function () {
     console.log("Server started on port 3000");
 });
+
+
+
