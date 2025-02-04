@@ -40,7 +40,7 @@ app.post("/send", function (req, res) {
             title: "Teav Coffee",
             body: 'Your order is ready for pickup',
         },
-        token: "dJJfW_0PRzOPQSETDmQCp5:APA91bFuSyKbOVbWYeTdNFX7x5cRrC5BR5R96wYE7j6GxFbNvOSarmfz7TwxYV7kZGaT5cORYT64jsjjVvdjzjZ6ui3IpmB_vJ76CT1Pmny-tFyOEXuebPw",
+        token: receivedToken,
     };
 
     getMessaging()
